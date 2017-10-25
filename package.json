@@ -1,0 +1,44 @@
+{
+  "name": "vulture",
+  "version": "0.0.0-alpha-1",
+  "description": "Open-Source Js Error Reporting for Production Environments",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack --watch  --progress --color",
+    "test": "cross-env NODE_ENV=test nyc -x src/**/*.spec.js mocha ./src/**/*.spec.js --require babel-core/register",
+    "build": "cross-env NODE_ENV=production webpack --progress --color --hide-modules --display-optimization-bailout"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flasd/vulture.git"
+  },
+  "keywords": [
+    "error-reporting",
+    "production",
+    "javascript"
+  ],
+  "author": "Marcel Coelho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flasd/vulture/issues"
+  },
+  "homepage": "https://github.com/flasd/vulture#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-loop-optimizer": "^1.4.1",
+    "babel-plugin-meaningful-logs": "^1.0.2",
+    "babel-plugin-rewire": "^1.1.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-minify": "^0.2.0",
+    "chai": "^4.1.2",
+    "cross-env": "^5.1.0",
+    "mocha": "^4.0.1",
+    "nyc": "^11.2.1",
+    "sinon": "^4.0.1",
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {}
+}
