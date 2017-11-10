@@ -6,6 +6,7 @@ import {
     patterns,
 } from './helpers';
 
+
 /**
  * Vulture Class
  *
@@ -73,6 +74,24 @@ export default class Vulture {
             });
 
         return result;
+    }
+
+    /**
+     * Parses an error to get more info about it, like walking the stack if
+     * it exists or accessing line, column and source.
+     *
+     * @param      {Error}  error   The error,
+     * @todo       Something like tracekit. https://github.com/csnover/TraceKit
+     */
+    static parse(error) {
+        /**
+         * We actualy should bind to window by default, to be able to get more
+         * info about the error.
+         */
+
+         const Payload = buildReport(error);
+         Payload.tag = getPayloadHash(Payload);
+
     }
 
     /**

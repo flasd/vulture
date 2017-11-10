@@ -40,5 +40,7 @@
     "sinon": "^4.0.1",
     "webpack": "^3.8.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "stacktrace-parser": "^0.1.4"
+  }
 }

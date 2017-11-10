@@ -42,6 +42,27 @@ export function getAvailableErrorProps() {
 }
 
 /**
+ * Generates a hash for a given error.
+ *
+ * @param      {Error}  Payload  The VultureError payload
+ * @return     {<type>}   The error hash.
+ */
+export function genErrorHash(Payload) {
+    const stg = JSON.stringify(Payload) || '';
+    let hash = 0;
+
+    for (let i = 0; i < stg.length; i++) {
+        const char = stg.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+    }
+
+    const unsigned = hash < 0 ? (hash * -1) : hash;
+
+    return unsigned.toString(10);
+}
+
+/**
  * Gets the global namespace.
  *
  * @return     {Object}  The global namespace.
@@ -95,5 +116,5 @@ export const patterns = [
  * @return     {Array}  The truthy keys
  */
 export function pickTruthy(obj) {
-    return Object.keys(obj).map(k => !!obj[k] ? k : false).filter(x => x);
+    return Object.keys(obj).map(k => obj[k] ? k : false).filter(x => x);
 }
